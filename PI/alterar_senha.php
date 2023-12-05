@@ -29,16 +29,14 @@
                     $resultado = consulta_do_banco($server, $user, $password, $db, $consulta);
 
                     if ($resultado === "senha_incorreta") {
-                        // Senha atual está incorreta
                         echo "A senha atual está incorreta.";
-                        // Ou redirecione para uma página informando sobre a senha incorreta
                     } else {
                         if ($resultado->num_rows > 0) {
                             $nova_senha = $_POST['nova_senha'];
                             $confirmar_senha = $_POST['confirmar_senha'];
                             
                             if ($nova_senha == $confirmar_senha) {
-                                // Atualiza a senha
+                                
                                 $consulta_atualizar_senha = "UPDATE `discentes` SET `SENHA` = '$nova_senha' WHERE `SENHA` = '$senha_atual'";
                                 $resultado_atualizar_senha = consulta_do_banco($server, $user, $password, $db, $consulta_atualizar_senha);
 
